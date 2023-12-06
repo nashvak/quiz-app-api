@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:quiz_app_api/colors/colors.dart';
+import 'package:quiz_app_api/view/result_screen.dart';
 
 class QuizScreen extends StatefulWidget {
   const QuizScreen({super.key});
@@ -75,7 +76,14 @@ class _QuizScreenState extends State<QuizScreen> {
                       ),
                       foregroundColor: Appcolors.backgroundColor,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ResultScreen(),
+                        ),
+                      );
+                    },
                     child: const Text(
                       'Next',
                       style: TextStyle(
