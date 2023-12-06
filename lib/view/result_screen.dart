@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_app_api/colors/colors.dart';
 
+import 'package:quiz_app_api/view/homescreen.dart';
+
 class ResultScreen extends StatefulWidget {
   const ResultScreen({super.key});
 
@@ -23,55 +25,83 @@ class _ResultScreenState extends State<ResultScreen> {
                 borderRadius: BorderRadius.circular(20),
                 child: Container(
                   color: Colors.white,
-                  padding: EdgeInsets.all(30),
+                  padding: const EdgeInsets.all(40),
                   child: Column(
                     children: [
                       Image.asset(
                         'assets/congrats.gif',
-                        width: 100,
+                        width: 180,
                       ),
-                      Text(
+                      const Text(
                         '50% score',
                         style: TextStyle(
-                            fontSize: 25,
+                            fontSize: 24,
                             color: Colors.red,
                             fontWeight: FontWeight.bold),
                       ),
-                      Text('Quiz completed succesfully..!'),
-                      Text(
-                        'You attempt 10 Questions and from that 5 answer is correct',
-                        style: TextStyle(
-                          fontSize: 15,
+                      const Text(
+                        'Quiz completed succesfully..!',
+                        style: TextStyle(fontWeight: FontWeight.w500),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      RichText(
+                        text: const TextSpan(
+                          text: 'You attempt  ',
+                          style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.black,
+                              fontWeight: FontWeight.w500),
+                          children: <TextSpan>[
+                            TextSpan(
+                              text: '10 questions',
+                              style: TextStyle(color: Colors.red),
+                            ),
+                            TextSpan(
+                              text: ' and from that ',
+                              style:
+                                  TextStyle(fontSize: 16, color: Colors.black),
+                            ),
+                            TextSpan(
+                              text: '5 answers',
+                              style:
+                                  TextStyle(fontSize: 16, color: Colors.green),
+                            ),
+                            TextSpan(
+                              text: ' is correct.',
+                              style:
+                                  TextStyle(fontSize: 16, color: Colors.black),
+                            ),
+                          ],
                         ),
                       ),
                     ],
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.white,
-                  padding: EdgeInsets.symmetric(horizontal: 40, vertical: 12),
+                  backgroundColor: Colors.red,
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 40, vertical: 12),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  foregroundColor: Appcolors.backgroundColor,
+                  foregroundColor: Colors.white,
                 ),
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => ResultScreen(),
-                    ),
-                  );
+                  Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const HomeScreen()),
+                      (route) => false);
                 },
                 child: const Text(
-                  'Try again',
-                  style: TextStyle(
-                      color: Color(0xFF481450), fontWeight: FontWeight.w700),
+                  'Try again...!',
                 ),
               ),
             ],
